@@ -149,16 +149,6 @@ public class MainActivity extends Activity implements OnClickListener, CvCameraV
         Mat copy = new Mat();
         mRgba.copyTo(copy);
         if (mIsColorSelected) {
-            final Res result = mDetector.process(mRgba);
-            mRgba = result.mat;
-            if(result.str != "") {
-                runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        segmentTxt.setText("7 SEGMENT CONTENT: " + result.str);
-                    }
-                });
-            }
             try {
                 zxing(copy);
             } catch (ChecksumException e) {
